@@ -1,0 +1,226 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account data including career path and scores.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "careerField": { "type": "string" },
+        "subDomain": { "type": "string" },
+        "onboardingScore": { "type": "integer" },
+        "diagnosticCompleted": { "type": "boolean" },
+        "isPremium": { "type": "boolean" },
+        "isBountyReady": { "type": "boolean" },
+        "points": { "type": "integer" },
+        "balance": { "type": "number" },
+        "completedBountiesCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Bounty": {
+      "title": "Neural Bounty",
+      "description": "A high-stakes coding task linked to real GitHub issues.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "githubIssueUrl": { "type": "string" },
+        "rewardAmount": { "type": "number" },
+        "rewardPoints": { "type": "integer" },
+        "difficulty": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["open", "accepted", "submitted", "completed"]
+        },
+        "domain": { "type": "string" },
+        "acceptedBy": { "type": "string" }
+      },
+      "required": ["id", "title", "rewardAmount"]
+    },
+    "Certificate": {
+      "title": "Certificate",
+      "description": "Skill validation certificate.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "issuer": { "type": "string" }
+      },
+      "required": ["id", "title"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "User portfolio project.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "tech": { "type": "string" },
+        "link": { "type": "string" }
+      },
+      "required": ["id", "title"]
+    },
+    "Task": {
+      "title": "Daily Task",
+      "description": "Daily career acceleration mission.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "target": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "completed"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "System or recruiter alert.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "message", "read"]
+    },
+    "Sticker": {
+      "title": "Sticker",
+      "description": "Achievement badge.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "icon": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "Coach or bot interaction message.",
+      "type": "object",
+      "properties": {
+        "role": { "type": "string", "enum": ["user", "ai"] },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["role", "text"]
+    },
+    "Assessment": {
+      "title": "Assessment Result",
+      "description": "Score and analysis from tests or contests.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["diagnostic", "contest", "subtopic"]
+        },
+        "score": { "type": "integer" },
+        "totalQuestions": { "type": "integer" },
+        "accuracy": { "type": "string" },
+        "analysis": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["type", "score", "timestamp"]
+    },
+    "LearningProgress": {
+      "title": "Learning Progress",
+      "description": "Tracks subtopic and module completion.",
+      "type": "object",
+      "properties": {
+        "topicId": { "type": "string" },
+        "subtopicId": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "lastAccessed": { "type": "string", "format": "date-time" }
+      },
+      "required": ["topicId", "completed"]
+    },
+    "Recruiter": {
+      "title": "Recruiter Profile",
+      "description": "Company and recruiter information.",
+      "type": "object",
+      "properties": {
+        "companyName": { "type": "string" },
+        "industry": { "type": "string" },
+        "verified": { "type": "boolean" },
+        "subscriptionLevel": { "type": "string" }
+      },
+      "required": ["companyName"]
+    },
+    "Job": {
+      "title": "Job Listing",
+      "description": "Position posted by recruiters.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "companyId": { "type": "string" },
+        "description": { "type": "string" },
+        "requirements": { "type": "array", "items": { "type": "string" } },
+        "salary": { "type": "string" },
+        "postedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "companyId", "postedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Public user profiles accessible by self."
+    },
+    "/users/{userId}/certificates/{certId}": {
+      "schema": "Certificate",
+      "description": "Validated skill certificates."
+    },
+    "/users/{userId}/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Portfolio projects."
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": "Task",
+      "description": "Daily missions."
+    },
+    "/users/{userId}/notifications/{notifId}": {
+      "schema": "Notification",
+      "description": "User alerts."
+    },
+    "/users/{userId}/stickers/{stickerId}": {
+      "schema": "Sticker",
+      "description": "Achievement badges."
+    },
+    "/users/{userId}/coachChat/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "AI Coach history."
+    },
+    "/users/{userId}/assessments/{assessmentId}": {
+      "schema": "Assessment",
+      "description": "Assessment history."
+    },
+    "/users/{userId}/learning/{learningId}": {
+      "schema": "LearningProgress",
+      "description": "Learning path progress."
+    },
+    "/bounties/{bountyId}": {
+      "schema": "Bounty",
+      "description": "Available neural bounties for work and earn."
+    },
+    "/recruiters/{recruiterId}": {
+      "schema": "Recruiter",
+      "description": "Recruiter account data."
+    },
+    "/jobs/{jobId}": {
+      "schema": "Job",
+      "description": "Public job listings."
+    }
+  }
+}

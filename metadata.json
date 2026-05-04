@@ -1,0 +1,6 @@
+{
+  "name": "Credora - AI-Powered Career Acceleration",
+  "description": "Professional platform for skill validation, career tracking, and AI-driven job matching featuring Neural Pathfinder roadmaps and AI-architected assessments.",
+  "requestFramePermissions": ["camera", "microphone", "geolocation"],
+  "majorCapabilities": []
+}
